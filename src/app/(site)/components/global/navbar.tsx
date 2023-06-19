@@ -35,7 +35,7 @@ export default function Example({
   mobileLogoWidth,
   hideCta,
   enableTransparent
-}: Props) {
+}: NavbarProps) {
 
 
   const [scroll, setScroll] = useState(false);

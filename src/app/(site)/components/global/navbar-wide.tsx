@@ -7,18 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Styles from "./navbar-wide.module.css"
 
-const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-]
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
-
 export default function NavbarWide({
     company_name,
     logo,
@@ -31,7 +19,6 @@ export default function NavbarWide({
     ctaLink,
     mobileLogoWidth,
     hideCta,
-    enableTransparent
 }: NavbarProps) {
 
     const ctaLinking =
