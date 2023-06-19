@@ -27,6 +27,7 @@ import HeroSidebySide from "./hero-sidebyside";
 import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
+import LeadFormTwoColumn from "./leadform-two-column";
 
 interface Props {
     pageBuilder: any[];
@@ -165,6 +166,11 @@ export default function Main({
                                     key={section?._key}
                                     content={section?.content}
                                     image={section?.imageData?.asset?.url}
+                                    imageHeight={
+                                        section?.imageHeight === 'fullscreen' && 'h-screen' ||
+                                        section?.imageHeight === 'mediumScreen' && 'min-h-[70vh]' ||
+                                        section?.imageHeight === 'smallScreen' && 'min-h-[50vh]'
+                                    }
                                     altText={section?.imageData?.asset?.altText}
                                     blurData={section?.imageData?.asset?.lqip}
                                     textAlign={section?.textAlign}
@@ -178,7 +184,6 @@ export default function Main({
                                     secondaryButtonText={section?.secondButtonLinking?.buttonText}
                                     secondaryButtonStyle={secondaryButton}
                                     imageOverlayColor={section?.imageOverlayColor}
-                                    imageHeight={section?.imageHeight}
                                 />
                             }
                             {section?.layoutType === "heroSwiper" &&
@@ -229,7 +234,7 @@ export default function Main({
                             layoutType={section?.layoutType}
                             heading={section?.heading}
                             {...settingsSchema}
-                            />
+                        />
                     );
                 }
 
@@ -561,13 +566,26 @@ export default function Main({
 
                 if (section._type === 'leadForm') {
                     return (
-                        <LeadForm
-                            key={section?._key}
-                            formSchema={section?.formBuilder}
-                            content={section?.content}
-                            textAlign={section?.textAlign}
-                            {...settingsSchema}
-                        />
+                        <>
+                            {section?.layoutType === 'oneColumn' &&
+                                <LeadForm
+                                    key={section?._key}
+                                    formSchema={section?.formBuilder}
+                                    content={section?.content}
+                                    textAlign={section?.textAlign}
+                                    {...settingsSchema}
+                                />
+                            }
+                            {section?.layoutType === 'twoColumn' &&
+                                <LeadFormTwoColumn
+                                    key={section?._key}
+                                    formSchema={section?.formBuilder}
+                                    content={section?.content}
+                                    textAlign={section?.textAlign}
+                                    {...settingsSchema}
+                                />
+                            }
+                        </>
                     );
                 }
 

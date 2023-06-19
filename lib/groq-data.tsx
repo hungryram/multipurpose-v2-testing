@@ -37,6 +37,8 @@ export const appearance = groq`
     },
     'header': header {
       hideCta,
+      enableTransparent,
+      menuLayout,
       'ctaLink': cta {
         newTab,
         _key,

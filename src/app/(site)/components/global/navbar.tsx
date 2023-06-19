@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
 import Styles from "./navbar.module.css"
 
-interface Props {
+export interface NavbarProps {
   company_name: string
   logo: string;
   navItems: any;
@@ -19,6 +19,7 @@ interface Props {
   ctaLink: any;
   mobileLogoWidth: number;
   hideCta: boolean;
+  enableTransparent: boolean;
 }
 
 export default function Example({
@@ -32,7 +33,8 @@ export default function Example({
   enableTopHeader,
   ctaLink,
   mobileLogoWidth,
-  hideCta
+  hideCta,
+  enableTransparent
 }: Props) {
 
 
@@ -66,7 +68,7 @@ export default function Example({
 
   return (
     <>
-      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 shadow`}>
+      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : 'shadow'}`}>
         {enableTopHeader &&
           <div className={`${Styles.topHeader} ${scroll && 'hidden'}`}>
             <div className={Styles.topHeaderContainer}>
@@ -186,7 +188,7 @@ export default function Example({
 
       {/* MOBILE */}
 
-      <Disclosure as="nav" className={`${Styles.mobileHeaderMenu} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700`}>
+      <Disclosure as="nav" className={`${Styles.mobileHeaderMenu} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : 'shadow'}`}>
         {({ open }) => (
           <>
             {enableTopHeader &&

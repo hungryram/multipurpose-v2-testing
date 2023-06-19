@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 import GoogleAnalytics from './components/global/analytics'
 import { interFont } from '../fonts'
 import Pixel from './components/global/pixel'
+import NavbarWide from './components/global/navbar-wide'
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -110,6 +111,22 @@ export default async function RootLayout({
     ...(data?.profileSettings?.seo?.meta_description && { "description": data?.profileSettings?.seo?.meta_description }),
   };
 
+  const navbarSchema = {
+    company_name: data.profileSettings?.company_name,
+    logo: data.appearances?.branding?.logo?.asset?.url,
+    navItems: data.appearances?.header?.mainNav?.navItems,
+    logoWidth: data.appearances?.branding?.logoWidth,
+    mobileLogoWidth: data.appearances?.branding?.mobileLogoWidth,
+    phone: data.profileSettings?.contact_information?.phone_number,
+    office: data.profileSettings?.contact_information?.office_number,
+    email: data.profileSettings?.contact_information?.email,
+    backgroundColor: data?.appearances?.navBgColor,
+    enableTopHeader: data?.appearances?.topHeaderBar?.enableTopHeaderBar,
+    ctaLink: data?.appearances?.header?.ctaLink,
+    hideCta: data?.appearances?.header?.hideCta,
+    enableTransparent: data?.appearances?.header?.enableTransparent,
+  }
+
 
   return (
     <html lang="en">
@@ -168,20 +185,16 @@ export default async function RootLayout({
               }
           `}
         </style>
-        <Navbar
-          company_name={data.profileSettings?.company_name}
-          logo={data.appearances?.branding?.logo?.asset?.url}
-          navItems={data.appearances?.header?.mainNav?.navItems}
-          logoWidth={data.appearances?.branding?.logoWidth}
-          mobileLogoWidth={data.appearances?.branding?.mobileLogoWidth}
-          phone={data.profileSettings?.contact_information?.phone_number}
-          office={data.profileSettings?.contact_information?.office_number}
-          email={data.profileSettings?.contact_information?.email}
-          backgroundColor={data?.appearances?.navBgColor}
-          enableTopHeader={data?.appearances?.topHeaderBar?.enableTopHeaderBar}
-          ctaLink={data?.appearances?.header?.ctaLink}
-          hideCta={data?.appearances?.header?.hideCta}
-        />
+        {data?.appearances?.header?.menuLayout === 'simple' &&
+          <Navbar
+            {...navbarSchema}
+          />
+        }
+        {data?.appearances?.header?.menuLayout === 'wide' &&
+          <NavbarWide
+            {...navbarSchema}
+          />
+        }
         {children}
         <Footer
           singleColumn={data?.appearances?.footer?.singleColumn}

@@ -42,7 +42,7 @@ export default function Hero({
     };
 
     return (
-        <div className={`relative isolate inset-0 ${imageHeight}`}>
+        <div className={`relative isolate inset-0 ${imageHeight} flex items-center`}>
             {image &&
                 <Image
                     src={image}

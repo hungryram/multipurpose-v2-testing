@@ -81,8 +81,12 @@ body .content h6 {
   @apply leading-7
 }
 
-.content ul, .content ol {
-  @apply my-2 list-disc ml-5;
+.content ul {
+  @apply my-2 list-disc ml-8;
+}
+
+.content ol {
+  @apply my-2 list-decimal ml-8
 }
 
 .content li {

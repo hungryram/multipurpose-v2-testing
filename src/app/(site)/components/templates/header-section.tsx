@@ -49,7 +49,7 @@ export default function HeaderSection({
           </div>
         </div>
       ) : (
-        <div className={`content max-w-4xl ${textAlign}`}>
+        <div className={`content ${textAlign} max-w-4xl`}>
           <ContentEditor content={content} />
         </div>
       )}

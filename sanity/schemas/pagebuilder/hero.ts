@@ -31,9 +31,9 @@ export default defineType({
             hidden: ({ parent }) => parent?.layoutType !== 'static',
             options: {
                 list: [
-                    { title: "Full Screen", value: "min-h-screen" },
-                    { title: "Medium", value: "min-h-[70vh]" },
-                    { title: "Small", value: "min-h-[50vh]" },
+                    { title: "Full Screen", value: "fullscreen" },
+                    { title: "Medium", value: "mediumScreen" },
+                    { title: "Small", value: "smallScreen" },
                 ],
             },
             initialValue: "h-[70vh]"
