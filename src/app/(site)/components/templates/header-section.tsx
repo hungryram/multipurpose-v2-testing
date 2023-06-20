@@ -33,7 +33,11 @@ export default function HeaderSection({
   return (
     <>
       {primaryButtonLinking || secondaryButtonLinking ? (
-        <div className={`content max-w-4xl ${textAlign}`}>
+        <div className={`content 
+        ${textAlign === 'left' && 'text-left max-w-4xl'}
+        ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'}
+        ${textAlign === 'right' && 'text-right justify-end'}
+        `}>
           <ContentEditor content={content} />
           <div className={`mt-10 flex items-center gap-x-6 ${textAlign}`}>
             {primaryButtonLinking && (
@@ -49,7 +53,11 @@ export default function HeaderSection({
           </div>
         </div>
       ) : (
-        <div className={`content ${textAlign} max-w-4xl`}>
+        <div className={`content 
+        ${textAlign === 'left' && 'text-left max-w-4xl'}
+        ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'}
+        ${textAlign === 'right' && 'text-right justify-end'}
+        `}>
           <ContentEditor content={content} />
         </div>
       )}

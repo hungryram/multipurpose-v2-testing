@@ -1,7 +1,7 @@
 export const textAlign = [
-    { title: 'Left', value: 'text-left' },
-    { title: 'Center', value: 'text-center mx-auto justify-center' },
-    { title: 'Right', value: 'mx-auto mr-0 text-right justify-end' },
+    { title: 'Left', value: 'left' },
+    { title: 'Center', value: 'center' },
+    { title: 'Right', value: 'right' },
 ]
 
 export const primaryButton = {
